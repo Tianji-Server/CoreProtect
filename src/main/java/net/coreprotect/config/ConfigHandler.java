@@ -101,6 +101,7 @@ public class ConfigHandler extends Queue {
     public static ConcurrentHashMap<String, List<ItemStack>> itemsSell = new ConcurrentHashMap<>();
     public static ConcurrentHashMap<String, List<ItemStack>> itemsBuy = new ConcurrentHashMap<>();
     public static ConcurrentHashMap<String, Object[]> hopperAbort = new ConcurrentHashMap<>();
+    public static ConcurrentHashMap<String, Object[]> hopperSuccess = new ConcurrentHashMap<>();
     public static Map<String, List<ItemStack[]>> forceContainer = syncMap();
     public static Map<String, Integer> lookupType = syncMap();
     public static Map<String, Object[]> lookupThrottle = syncMap();
@@ -249,7 +250,7 @@ public class ConfigHandler extends Queue {
             config.addDataSourceProperty("maintainTimeStats", "false");
             /* Disable SSL to suppress the unverified server identity warning */
             config.addDataSourceProperty("allowPublicKeyRetrieval", "true");
-            config.addDataSourceProperty("useSSL", "false");
+            config.addDataSourceProperty("useSSL", Config.getGlobal().ENABLE_SSL);
 
             ConfigHandler.hikariDataSource = new HikariDataSource(config);
         }
